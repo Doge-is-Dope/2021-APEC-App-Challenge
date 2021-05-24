@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">APEC Health Key</string>
+
+    <string name="bottom_nav_profile">Profile</string>
+    <string name="bottom_nav_healthKey">HealthKey</string>
+    <string name="bottom_nav_explore">Explore</string>
+</resources>

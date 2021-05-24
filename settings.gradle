@@ -1,0 +1,2 @@
+rootProject.name = "APEC Health Key"
+include ':app'
