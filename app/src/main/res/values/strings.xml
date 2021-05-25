@@ -4,4 +4,9 @@
     <string name="bottom_nav_profile">Profile</string>
     <string name="bottom_nav_healthKey">HealthKey</string>
     <string name="bottom_nav_explore">Explore</string>
+
+    <string name="text_application_desc_approved">Now you can visit attractions with confidence with HealthKey</string>
+    <string name="text_application_result_approved">Application approved</string>
+
+    <string name="text_updated">%1$s updated</string>
 </resources>

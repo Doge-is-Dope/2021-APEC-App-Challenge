@@ -1,10 +1,11 @@
-package com.chunchiehliang.apechealthkey
+package com.chunchiehliang.apechealthkey.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.chunchiehliang.apechealthkey.R
 import com.chunchiehliang.apechealthkey.databinding.FragmentMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

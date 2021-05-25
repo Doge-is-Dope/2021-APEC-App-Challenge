@@ -12,13 +12,13 @@
         tools:layout="@layout/fragment_health_key" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.chunchiehliang.apechealthkey.ProfileFragment"
+        android:name="com.chunchiehliang.apechealthkey.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.chunchiehliang.apechealthkey.MapFragment"
+        android:name="com.chunchiehliang.apechealthkey.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
 </navigation>
