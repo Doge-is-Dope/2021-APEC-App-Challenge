@@ -17,8 +17,8 @@ class CheckListAdapter(private val listener: CheckListener) :
     }
 
     override fun onBindViewHolder(holder: CheckViewHolder, position: Int) {
-        val electionItem = getItem(position)
-        holder.bind(electionItem, listener)
+        val checkItem = getItem(position)
+        holder.bind(checkItem, listener)
     }
 
     class CheckViewHolder(private var binding: ItemCheckBinding) :

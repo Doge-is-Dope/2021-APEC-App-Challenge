@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="attraction"
+            type="com.chunchiehliang.apechealthkey.models.Attraction" />
+
+        <variable
+            name="listener"
+            type="com.chunchiehliang.apechealthkey.map.AttractionListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="164dp"
+        android:layout_height="240dp"
+        android:layout_marginEnd="@dimen/material_margin"
+        app:cardCornerRadius="@dimen/card_radius"
+        tools:background="@color/healthKey_secondary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_safe_indicator"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_marginHorizontal="@dimen/material_margin"
+                android:layout_marginTop="@dimen/material_spacing"
+                android:src="@drawable/bg_safe_indicator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_attraction" />
+
+
+            <ImageView
+                android:id="@+id/img_attraction"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:contentDescription="@string/img_attraction"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_launcher_foreground"
+                app:imageUrl="@{attraction.imgId}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_spacing"
+                android:layout_marginHorizontal="@dimen/material_margin"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:scaleType="centerCrop"
+                android:text="@{attraction.title}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_safe_indicator"
+                tools:text="Taipei 101 Taipeiasdadaasdasd" />
+
+            <TextView
+                android:id="@+id/tv_status_distance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/material_margin"
+                android:layout_marginTop="@dimen/material_margin"
+                android:layout_marginBottom="@dimen/material_margin"
+                android:scaleType="centerCrop"
+                app:distance="@{attraction.distance}"
+                app:isOpen="@{attraction.isOpen}"
+                app:layout_constraintBottom_toTopOf="@id/tv_density"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="long text" />
+
+            <TextView
+                android:id="@+id/tv_density"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/material_margin"
+                android:scaleType="centerCrop"
+                android:text="@{attraction.density}"
+                android:textColor="@color/color_safe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Not busy" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

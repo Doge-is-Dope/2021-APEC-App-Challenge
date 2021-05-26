@@ -29,8 +29,8 @@ class ProfileViewModel : ViewModel() {
             _checks.value = mutableListOf(
                 Check(0, true, "Vaccinated", Date(1622378628000)),
                 Check(1, true, "COVID-19 Tested Negative", Date(1622378628000)),
-                Check(2, true, "COVID-19 Tested Negative", Date(1622378628000)),
-                Check(3, true, "14 Days without contact with diagnosed", Date(1622378628000)),
+                Check(2, true, "14 Days without contact with diagnosed", Date(1622378628000)),
+//                Check(3, true, "14 Days without contact with diagnosed", Date(1622378628000)),
             )
             _isLoading.value = false
         }

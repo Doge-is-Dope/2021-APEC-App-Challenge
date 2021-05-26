@@ -10,4 +10,5 @@
     <color name="secondary_dark">#00c494</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_safe">#32DE16</color>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">APEC Health Key</string>
+    <string name="app_name">HealthKey</string>
 
     <string name="bottom_nav_profile">Profile</string>
     <string name="bottom_nav_healthKey">HealthKey</string>
@@ -9,4 +9,11 @@
     <string name="text_application_result_approved">Application approved</string>
 
     <string name="text_updated">%1$s updated</string>
+    <string name="fab_upload">Upload</string>
+    <string name="img_attraction">attraction</string>
+
+    <string name="text_attraction_dot_separator">%1$s · %2$s</string>
+    <string name="fab_filter">filter</string>
+    <string name="chip_healthkey_only">HealthKey only</string>
+    <string name="fab_direct">direct</string>
 </resources>

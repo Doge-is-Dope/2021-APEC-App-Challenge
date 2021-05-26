@@ -15,14 +15,24 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.APECHealthKey.NoActionBar">
+            android:name=".splash.SplashActivity"
+            android:theme="@style/Theme.APECHealthKey.NoActionBar"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.APECHealthKey.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleTask">
+        </activity>
+
+
     </application>
 
 </manifest>
