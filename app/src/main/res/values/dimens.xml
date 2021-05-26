@@ -3,5 +3,5 @@
     <dimen name="material_spacing">8dp</dimen>
     <dimen name="large_margin">44dp</dimen>
     <dimen name="card_radius">20dp</dimen>
-    <dimen name="bottom_nav_height">76dp</dimen>
+    <dimen name="bottom_nav_height">64dp</dimen>
 </resources>

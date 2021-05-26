@@ -1,6 +1,7 @@
 package com.chunchiehliang.apechealthkey.map
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.chunchiehliang.apechealthkey.R
 import com.chunchiehliang.apechealthkey.databinding.FragmentMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -34,10 +38,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = mapViewModel
+            recyclerAttractions.hasFixedSize()
             recyclerAttractions.adapter = AttractionListAdapter(AttractionListener {
             })
         }
-
         // Instantiate the map
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

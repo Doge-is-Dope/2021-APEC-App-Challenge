@@ -52,6 +52,7 @@
             app:fabSize="mini"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_bar"
+            app:showToast="@{@string/toast_msg_wip}"
             app:srcCompat="@drawable/ic_filter"
             app:tint="@color/white" />
 
@@ -69,7 +70,8 @@
             app:closeIconVisible="true"
             app:layout_constraintBottom_toBottomOf="@id/fab_filter"
             app:layout_constraintStart_toEndOf="@id/fab_filter"
-            app:layout_constraintTop_toTopOf="@id/fab_filter" />
+            app:layout_constraintTop_toTopOf="@id/fab_filter"
+            app:showToast="@{@string/toast_msg_wip}" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -78,7 +80,8 @@
             android:contentDescription="@string/fab_direct"
             android:src="@drawable/ic_button_direct"
             app:layout_constraintBottom_toTopOf="@id/recycler_attractions"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:showToast="@{@string/toast_msg_wip}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_attractions"

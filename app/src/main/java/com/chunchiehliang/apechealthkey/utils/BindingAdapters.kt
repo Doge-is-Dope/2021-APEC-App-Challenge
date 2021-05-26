@@ -1,8 +1,9 @@
 package com.chunchiehliang.apechealthkey.utils
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -30,7 +31,7 @@ fun RecyclerView.setAttractionData(data: List<Attraction>?) {
 @BindingAdapter("isOpen", "distance")
 fun TextView.setMapOpenWithDistance(isOpen: Boolean, distance: Int) {
 
-    val distanceStringInKm =  if (distance < 1000) "$distance m" else "${(distance / 1000)} km"
+    val distanceStringInKm = if (distance < 1000) "$distance m" else "${(distance / 1000)} km"
     text = resources.getString(
         R.string.text_attraction_dot_separator,
         if (isOpen) "Open" else "Closed",
@@ -61,5 +62,14 @@ fun ImageView.bindImage(imgId: Int?) {
             .load(imgId)
             .apply(sharedOptions)
             .into(this)
+    }
+}
+
+@BindingAdapter("showToast")
+fun View.showToast(message: String?) {
+    message?.let {
+        setOnClickListener {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
     }
 }
