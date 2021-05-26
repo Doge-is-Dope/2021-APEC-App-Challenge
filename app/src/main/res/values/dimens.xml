@@ -5,6 +5,6 @@
     <dimen name="card_radius">20dp</dimen>
     <dimen name="bottom_nav_height">64dp</dimen>
 
-    <dimen name="viewpager_next_item_visible">90dp</dimen>
-    <dimen name="viewpager_current_item_horizontal_margin">120dp</dimen>
+    <dimen name="viewpager_next_item_visible">92dp</dimen>
+    <dimen name="viewpager_current_item_horizontal_margin">112dp</dimen>
 </resources>

@@ -76,7 +76,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/fab_direct"
             android:src="@drawable/ic_button_direct"
             app:layout_constraintBottom_toTopOf="@id/pager_attractions"
