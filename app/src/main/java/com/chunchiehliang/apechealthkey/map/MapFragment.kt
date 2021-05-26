@@ -1,25 +1,28 @@
 package com.chunchiehliang.apechealthkey.map
 
+import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import androidx.annotation.DimenRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener
+import androidx.viewpager2.widget.ViewPager2
 import com.chunchiehliang.apechealthkey.R
 import com.chunchiehliang.apechealthkey.databinding.FragmentMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+
 
 class MapFragment : Fragment(), OnMapReadyCallback {
 
@@ -38,10 +41,30 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = mapViewModel
-            recyclerAttractions.hasFixedSize()
-            recyclerAttractions.adapter = AttractionListAdapter(AttractionListener {
+            pagerAttractions.adapter = AttractionListAdapter(AttractionListener {
+            })
+            pagerAttractions.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                }
+
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    Log.d("MapFragment", "page: $position")
+                    mapViewModel.setCurrentAttraction(position)
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                }
             })
         }
+        setupViewPager()
         // Instantiate the map
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -54,15 +77,56 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val taipei101 = LatLng(25.03386008609641, 121.56453891088545)
+
         mMap = googleMap
 
-        mMap.addMarker(
-            MarkerOptions()
-                .position(taipei101)
-                .title("Taipei 101")
-        )
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(taipei101, 16f))
+        mapViewModel.currentAttraction.observe(viewLifecycleOwner, Observer {
+            Log.d("MapFragment", "current: $it")
+            val coordinate = LatLng(it.lat, it.lng)
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(coordinate)
+                    .title(it.title)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker))
+            )
 
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinate, 16f))
+        })
+    }
+
+    private fun setupViewPager() {
+        binding.pagerAttractions.offscreenPageLimit = 2
+
+        val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
+        val currentItemHorizontalMarginPx =
+            resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
+        val pageTranslationX = nextItemVisiblePx + currentItemHorizontalMarginPx
+        val pageTransformer = ViewPager2.PageTransformer { page: View, position: Float ->
+            page.translationX = -pageTranslationX * position
+        }
+        binding.pagerAttractions.setPageTransformer(pageTransformer)
+
+        val itemDecoration = HorizontalMarginItemDecoration(
+            requireContext(),
+            R.dimen.viewpager_current_item_horizontal_margin
+        )
+        binding.pagerAttractions.addItemDecoration(itemDecoration)
+    }
+
+    inner class HorizontalMarginItemDecoration(
+        context: Context,
+        @DimenRes horizontalMarginInDp: Int
+    ) :
+        RecyclerView.ItemDecoration() {
+
+        private val horizontalMarginInPx: Int =
+            context.resources.getDimension(horizontalMarginInDp).toInt()
+
+        override fun getItemOffsets(
+            outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State
+        ) {
+            outRect.right = horizontalMarginInPx
+            outRect.left = horizontalMarginInPx
+        }
     }
 }

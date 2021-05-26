@@ -79,17 +79,17 @@
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/fab_direct"
             android:src="@drawable/ic_button_direct"
-            app:layout_constraintBottom_toTopOf="@id/recycler_attractions"
+            app:layout_constraintBottom_toTopOf="@id/pager_attractions"
             app:layout_constraintEnd_toEndOf="parent"
             app:showToast="@{@string/toast_msg_wip}" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_attractions"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager_attractions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/material_margin"
             android:paddingBottom="@dimen/material_margin"
             app:attractionData="@{viewModel.attractions}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

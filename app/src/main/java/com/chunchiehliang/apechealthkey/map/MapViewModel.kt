@@ -18,6 +18,10 @@ class MapViewModel : ViewModel() {
     val attractions: LiveData<List<Attraction>>
         get() = _attractions
 
+    private val _currentAttraction = MutableLiveData<Attraction>()
+    val currentAttraction: LiveData<Attraction>
+        get() = _currentAttraction
+
     init {
         getAttractionsFromDatabase()
     }
@@ -27,13 +31,17 @@ class MapViewModel : ViewModel() {
         viewModelScope.launch {
             // dummy data
             _attractions.value = mutableListOf(
-                Attraction(0, "Taipei 101", true, 1200, "Not busy", R.raw.taipei101),
-                Attraction(1, "F Gallery", true, 800, "Not busy",R.raw.gallery),
-                Attraction(2, "The Grand Hotel", true, 2000, "Not busy", R.raw.grandhotel),
-                Attraction(3, "Bakery & Cafe ", true, 500, "Not busy",R.raw.bakery),
+                Attraction(0, "Taipei 101", 25.03386008609641, 121.56453891088545,true, 1200, "Not busy", R.raw.taipei101),
+                Attraction(1, "F Gallery", 25.051727157387027, 121.54556492601324,true, 800, "Not busy", R.raw.gallery),
+                Attraction(2, "The Grand Hotel", 25.08016571343226, 121.52641635846334,true, 2000, "Not busy", R.raw.grandhotel),
+                Attraction(3, "National Concert Hall", 25.037014761248585, 121.51905112759383,true, 500, "Not busy", R.raw.national_concert_hall),
             )
             _isLoading.value = false
         }
+    }
+
+    fun setCurrentAttraction(index: Int) {
+        _currentAttraction.value = _attractions.value?.get(index)
     }
 
     fun refresh() {

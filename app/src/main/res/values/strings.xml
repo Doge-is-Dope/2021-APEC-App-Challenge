@@ -16,5 +16,5 @@
     <string name="fab_filter">filter</string>
     <string name="chip_healthkey_only">HealthKey only</string>
     <string name="fab_direct">direct</string>
-    <string name="toast_msg_wip">Work in progress!</string>
+    <string name="toast_msg_wip">Work in progress</string>
 </resources>

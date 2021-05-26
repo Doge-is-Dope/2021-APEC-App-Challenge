@@ -6,6 +6,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.chunchiehliang.apechealthkey.R
@@ -23,7 +24,7 @@ fun RecyclerView.setCheckData(data: List<Check>?) {
 }
 
 @BindingAdapter("attractionData")
-fun RecyclerView.setAttractionData(data: List<Attraction>?) {
+fun ViewPager2.setAttractionData(data: List<Attraction>?) {
     val adapter = adapter as AttractionListAdapter
     adapter.submitList(data)
 }

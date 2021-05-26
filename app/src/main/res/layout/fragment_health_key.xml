@@ -29,10 +29,11 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="184dp"
+                android:layout_height="184dp"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_sample_qr_code" />
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/sample_qr_code" />
 
             <TextView
                 android:layout_width="match_parent"
