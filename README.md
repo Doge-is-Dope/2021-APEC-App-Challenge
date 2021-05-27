@@ -41,6 +41,12 @@ For more information, check out the [slides](https://docs.google.com/presentatio
 </p>
 
 
+## Contributers
+- Clement Liang
+- Danny Yao
+- Kei Zheng
+- Ian Tsai
+
 <!-- LICENSE -->
 ## License
 
